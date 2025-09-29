@@ -4,7 +4,6 @@ import { formData } from '../fixtures/formData';
 interface FormDataType {
   firstName: string;
   lastName: string;
-  email: string;
   gender: string;
   phone: string;
 }
@@ -16,7 +15,6 @@ test('Fill and submit practice form, verify results', async ({ page }) => {
 
   await page.fill('#firstName', currentFormData.firstName);
   await page.fill('#lastName', currentFormData.lastName);
-  await page.fill('#userEmail', currentFormData.email);
   await page.click(`//label[text()="${currentFormData.gender}"]`);
   await page.fill('#userNumber', currentFormData.phone);
   
@@ -28,7 +26,6 @@ test('Fill and submit practice form, verify results', async ({ page }) => {
   const tableRows = page.locator('.table-responsive tbody tr');
   const expectedData = [
     { label: 'Student Name', value: `${currentFormData.firstName} ${currentFormData.lastName}` },
-    { label: 'Student Email', value: currentFormData.email },
     { label: 'Gender', value: currentFormData.gender },
     { label: 'Mobile', value: currentFormData.phone },
   ];
